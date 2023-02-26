@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+  var data = {};
 
+  
 
   // age -----------------------------------------------------------------------
   document.getElementById("birthday").addEventListener("change", function () {
@@ -30,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     var output_age = document.querySelector(".output1");
     output_age.textContent = "Your age is " + age + ", " + isPrime(age);
-
+    data.age = age;
   });
   //----------------------------------------------------------------------------------------
 
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var email_input = document.getElementById("user_email");
   var email_title = document.getElementById("email_address");
   var validate_button = document.getElementById("validate");
+  var true_email = "";
 
   email_input.addEventListener("input", function () {
     var email = this.value;
@@ -60,11 +63,14 @@ document.addEventListener("DOMContentLoaded", function () {
       if (ValidateEmail(email)) {
         email_title.innerText = "Email is valid";
         email_title.style.color = "green";
+        true_email = email;
       } else {
         email_title.innerText = "Email is unvalid";
         email_title.style.color = "red";
       }
     })
+
+    data.email = true_email;
   });
   //-----------------------------------------------------------------------------------------
 
@@ -74,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //password ------------------------------------------------------------------------------
   var password_input = document.getElementById("user_password");
   var password_title = document.getElementById("password")
+  var true_password = "";
   password_input.addEventListener("input", function () {
     var password = this.value;
 
@@ -100,12 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
       if (containsUppercase(password) && passwordLength(password) && containsSpecialChars(password)) {
         password_title.innerText = "password is valid";
         password_title.style.color = "green";
+        true_password = password;
       } else {
         password_title.innerText = "password is unvalid!";
         password_title.style.color = "red";
       }
     })
-
+    data.password = true_password;
   })
   //-----------------------------------------------------------------------------------------
 
@@ -113,17 +121,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //fullname -----------------------------------------------------------------------------
   var fullname = document.getElementById("name");
-  fullname.addEventListener("input",function(){
+  fullname.addEventListener("input", function () {
     var first = document.getElementById("fname").value;
     var mid = document.getElementById("midname").value;
     var last = document.getElementById("lname").value;
 
-    function getFullName(str1,str2,str3){
-      return str1 + " " + str2 + " " + str3 
+    function getFullName(str1, str2, str3) {
+      return str1 + " " + str2 + " " + str3
     }
 
-    console.log(getFullName(first,mid,last));
+    data.fullname = getFullName(first, mid, last);
   })
+//-----------------------------------------------------------------------------------------
 
 
+
+//phonenumebr---------------------------------------------------------------------------
+var phone_number = document.getElementById("phnumber");
+phone_number.addEventListener("input",function(){
+var phone = document.getElementById("phnumber").value;
+data.phonenumber = phone;
+})
+
+
+//-----------------------------------------------------------------------------------------
+var json = JSON.stringify(data);
+console.log(json);
 })

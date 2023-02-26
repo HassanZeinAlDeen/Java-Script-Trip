@@ -35,21 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
   email_input[0].addEventListener("input", function () {
     var email = this.value;
 
-    function validEmail(email) {
-      if (email.includes("@") && email.includes(".") && email.length > email.indexOf(".") + 2) {
-        if (email.indexOf(".") > email.indexOf("@")) {
-          return true;
-        }
-        else {
-          return false;
-        }
+    function ValidateEmail(email) {
+      var format = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      if (email.match(format)) {
+        return true;
       }
       else {
-        return false
+        return false;
       }
     }
 
-    console.log(validEmail(email))
   });
 
   var password_input = document.getElementById("user_password");
@@ -60,11 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return /[A-Z]/.test(password);
     }
 
-    function passwordLength(str){
-      if(str.length > 8){
+    function passwordLength(str) {
+      if (str.length >= 8) {
         return true;
       }
-      else{
+      else {
         return false;
       }
     }
@@ -75,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return specialChars.test(str);
     }
 
-    console.log(containsSpecialChars(password))
   })
 
 

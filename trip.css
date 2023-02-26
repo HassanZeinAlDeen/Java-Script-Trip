@@ -51,3 +51,27 @@ button:hover{
   color: #378C84;
   gap: 2px;
 }
+h5{
+  margin: 5px auto;
+  color: #378C84;
+}
+hr{
+  width: 100%;
+  color: #378C84 ;
+}
+.name{
+  display: flex;
+  flex-direction:row;
+  gap: 10px;
+  height: 200px;
+  border: 1px solid #378C84 ;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.name > h5{
+  margin: 5px 10px;
+}
+.name > input{
+  margin-right: 10px;
+}

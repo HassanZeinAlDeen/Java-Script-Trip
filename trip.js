@@ -31,14 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
-  var emailinput = document.getElementsByClassName("user_email");
-  emailinput[0].addEventListener("input", function () {
+  var email_input = document.getElementsByClassName("user_email");
+  email_input[0].addEventListener("input", function () {
     var email = this.value;
-    console.log(email)
 
-    function is_email(email) {
-
-      if (email.includes("@") && email.includes(".")) {
+    function validEmail(email) {
+      if (email.includes("@") && email.includes(".") && email.length > email.indexOf(".") + 2) {
         if (email.indexOf(".") > email.indexOf("@")) {
           return true;
         }
@@ -46,12 +44,39 @@ document.addEventListener("DOMContentLoaded", function () {
           return false;
         }
       }
-      else{
+      else {
         return false
       }
     }
 
-    console.log(is_email(email))
-
+    console.log(validEmail(email))
   });
+
+  var password_input = document.getElementById("user_password");
+  password_input.addEventListener("input", function () {
+    var password = this.value;
+
+    function containsUppercase(str) {
+      return /[A-Z]/.test(password);
+    }
+
+    function passwordLength(str){
+      if(str.length > 8){
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
+    function containsSpecialChars(str) {
+      var specialChars =
+        /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      return specialChars.test(str);
+    }
+
+    console.log(containsSpecialChars(password))
+  })
+
+
 })

@@ -110,4 +110,20 @@ document.addEventListener("DOMContentLoaded", function () {
   //-----------------------------------------------------------------------------------------
 
 
+
+  //fullname -----------------------------------------------------------------------------
+  var fullname = document.getElementById("name");
+  fullname.addEventListener("input",function(){
+    var first = document.getElementById("fname").value;
+    var mid = document.getElementById("midname").value;
+    var last = document.getElementById("lname").value;
+
+    function getFullName(str1,str2,str3){
+      return str1 + " " + str2 + " " + str3 
+    }
+
+    console.log(getFullName(first,mid,last));
+  })
+
+
 })

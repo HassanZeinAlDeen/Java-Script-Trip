@@ -59,7 +59,7 @@ hr{
   width: 100%;
   color: #378C84 ;
 }
-.name{
+#name{
   display: flex;
   flex-direction:row;
   gap: 10px;
@@ -69,9 +69,9 @@ hr{
   justify-content: center;
   align-items: center;
 }
-.name > h5{
+#name > h5{
   margin: 5px 10px;
 }
-.name > input{
+#name > input{
   margin-right: 10px;
 }

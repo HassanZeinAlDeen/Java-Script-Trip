@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+  // age -----------------------------------------------------------------------
   document.getElementById("birthday").addEventListener("change", function () {
     var DOB = this.value;
     var birth_date = new Date(DOB);
@@ -30,9 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
     output_age.textContent = "Your age is " + age + ", " + isPrime(age);
 
   });
+  //----------------------------------------------------------------------------------------
 
-  var email_input = document.getElementsByClassName("user_email");
-  email_input[0].addEventListener("input", function () {
+
+
+
+
+  // email ---------------------------------------------------------------------------------
+  var email_input = document.getElementById("user_email");
+  var email_title = document.getElementById("email_address");
+  var validate_button = document.getElementById("validate");
+
+  email_input.addEventListener("input", function () {
     var email = this.value;
 
     function ValidateEmail(email) {
@@ -45,9 +56,24 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
+    validate_button.addEventListener("click", function () {
+      if (ValidateEmail(email)) {
+        email_title.innerText = "Email is valid";
+        email_title.style.color = "green";
+      } else {
+        email_title.innerText = "Email is unvalid";
+        email_title.style.color = "red";
+      }
+    })
   });
+  //-----------------------------------------------------------------------------------------
 
+
+
+
+  //password ------------------------------------------------------------------------------
   var password_input = document.getElementById("user_password");
+  var password_title = document.getElementById("password")
   password_input.addEventListener("input", function () {
     var password = this.value;
 
@@ -70,7 +96,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return specialChars.test(str);
     }
 
+    validate_button.addEventListener("click", function () {
+      if (containsUppercase(password) && passwordLength(password) && containsSpecialChars(password)) {
+        password_title.innerText = "password is valid";
+        password_title.style.color = "green";
+      } else {
+        password_title.innerText = "password is unvalid!";
+        password_title.style.color = "red";
+      }
+    })
+
   })
+  //-----------------------------------------------------------------------------------------
 
 
 })

@@ -248,15 +248,17 @@ document.addEventListener("DOMContentLoaded", function () {
   })
   var No = document.getElementById("warning");
   window.addEventListener('scroll', function () {
-    // get the position of the top of the div
     var a = No.getBoundingClientRect().top;
 
-    // check if the top of the div is in view
     if (a <= window.innerHeight) {
-      // the div is in view, so alert the user
       alert('Stop there');
-    } 
+    }
   })
 
-
+  var input = prompt("Enter a string:");
+  var regex = /\d/g;
+  var switched = input.replace(regex, function (match) {
+    return (7 - parseInt(match)).toString();
+  });
+  alert("The switched string is: " + switched); 
 })

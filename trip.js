@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return "it is prime";
     }
 
-    validate_button.addEventListener("click",function(){
+    validate_button.addEventListener("click", function () {
       var output_age = document.querySelector(".output1");
       output_age.textContent = "Your age is " + age + ", " + isPrime(age);
     })
@@ -145,11 +145,28 @@ document.addEventListener("DOMContentLoaded", function () {
       return str1 + " " + str2 + " " + str3
     }
 
-    validate_button.addEventListener("click",function(){
+    var isPalindrome = function (str) {
+      var strLen = str.length;
+      if (strLen === 0 || strLen === 1) {
+        return true;
+      }
+
+      if (str[0] === str[strLen - 1]) {
+        return isPalindrome(str.slice(1, strLen - 1));
+      }
+
+      return false;
+    };
+
+
+    validate_button.addEventListener("click", function () {
       reversed_fname = first.split("").reverse().join("");
       final_name = reversed_fname.concat("ay");
       var reversed = document.querySelector(".output3");
       reversed.textContent = "Your New First Name is " + "'" + final_name + "'"
+
+      var pal = document.querySelector(".output4");
+      pal.textContent = "Your middle name is " + isPalindrome(pal);
     })
 
     data.fullname = getFullName(first, mid, last);
@@ -202,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var final_sortedArray = mergeSort(sorted_number)
 
-    validate_button.addEventListener("click",function(){
+    validate_button.addEventListener("click", function () {
       var output_sorted = document.querySelector(".output2");
       output_sorted.textContent = "Your sorted phone number is " + final_sortedArray;
     })
@@ -229,22 +246,17 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
   })
+  var No = document.getElementById("warning");
+  window.addEventListener('scroll', function () {
+    // get the position of the top of the div
+    var a = No.getBoundingClientRect().top;
 
-
-  //-----------------------------------------------------------------------------------------
-  /*validate_button.addEventListener("click", function () {
-    if (finalemail && finalnumber && finalpassword) {
-      console.log("success")
-    } else if (finalemail == false) {
-      console.log("email fail")
-    }
-    else if (finalnumber == false){
-      console.log("phone fail")
-    }
-    else if(finalpassword==false){
-      console.log("password fail")
-    }
-  })*/
+    // check if the top of the div is in view
+    if (a <= window.innerHeight) {
+      // the div is in view, so alert the user
+      alert('Stop there');
+    } 
+  })
 
 
 })
